@@ -1,0 +1,453 @@
+<div style="margin-top: 6rem;text-align: center; align-items: center;">
+
+  <div *ngIf="!authorized" class="form-floating mb-3">
+    <input type="email" style="width: 20%;margin-left: 41%;" class="form-control" id="floatingInput" [(ngModel)]="userName" placeholder="Username">
+    <label for="floatingInput" style="margin-left: 41%;">UserName</label>
+  </div>
+  <div *ngIf="!authorized" class="form-floating">
+    <input type="password" style="width: 20%;margin-left: 41%;" class="form-control" id="floatingPassword" [(ngModel)]="password" placeholder="Password">
+    <label for="floatingPassword" style="margin-left: 41%;">Password</label>
+  </div>
+  <!-- <div class="form-group form-check form-check-inline">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div> -->
+
+  <button *ngIf="!authorized" type="submit" class="btn btn-primary" (click)="verify()">Submit</button>
+  <div *ngIf="wrongcreds" class="alert alert-danger" role="alert">
+    <h4 class="alert-danger">Oh No!</h4>
+    <p>Seems You are not Authorized</p>
+    <hr>
+    <p class="mb-0">Enter correct Credentials if you really want the Access</p>
+  </div>
+
+  <div *ngIf="authorized" style="margin-top: 6vw">
+    <div class="alert alert-success" role="alert">
+      <h4 class="alert-heading">Logged In!(After Upload Please clear cache for changes to reflect immediately)</h4>
+    </div>
+    <input type="file" (change)="onChange($event)">
+    <button *ngIf="filename" class="btn btn-success" (click)="submit()">Upload</button>
+    
+  </div>
+</div>
+
+
+<!-- 
+'<json-editor [options]="editorOptions" [data]="initialData" (change)="showJson($event)"></json-editor>' +
+    '<div>{{ visibleData | json }}</div>' -->
+
+
+    <div class="container" *ngIf="authorized" style="margin-top: 20px;">
+      <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3">
+        <div class="col">
+          <div class="p-3 border bg-light text-center" style="background-color: #32a039 !important;color: white;">HomePage</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light text-center" style="background-color: #32a039 !important;color: white;">Annual Reports PDF</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light text-center" style="background-color: #32a039 !important;color: white;">Audit Reports PDF</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light text-center" style="background-color: #32a039 !important;color: white;">Recent Reports PDF</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light text-center" style="background-color: #32a039 !important;color: white;">Certificates & Other</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light text-center" style="background-color: #32a039 !important;color: white;">Interventions</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light">      <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="config" value="config.json" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="config">
+              config.json
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="DynamicReport" value="DynamicReport.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="DynamicReport">
+              Dynamic Report
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="OurPartners" value="OurPartners.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="OurPartners">
+              Our Partners
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="TIN" value="TIN.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="TIN">
+              TIN
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="Registration" value="Registration.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="Registration">
+              Reg. Certificate
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="Meetings" value="Meetings.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="Meetings">
+              Meetings
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="HomePageImage1" value="carousel1.jpg" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="HomePageImage1">
+              Slide Image1
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="AgmGallery" value="AgmGallery.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="AgmGallery">
+              AGM Gallery
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="TrainingExposure" value="TrainingExposure.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="TrainingExposure">
+              Training & Exposure
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="PAN" value="PAN.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="PAN">
+              PAN
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="12A" value="12A.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="12A">
+              12A Certificate
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="ServicestoMembers" value="ServicestoMembers.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="ServicestoMembers">
+              Other Services
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="HomePageImage2" value="carousel2.jpg" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="HomePageImage2">
+              Slide Image2
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="OtherVisuals" value="OtherVisuals.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="OtherVisuals">
+              Awards / Visitors /Services
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="CooperativeEducation" value="CooperativeEducation.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="CooperativeEducation">
+              Cooperative Education
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="LegalMetrology" value="LegalMetrology.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="LegalMetrology">
+              LegalMetrology
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="80G" value="80G.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="80G">
+              80G Certificate
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="OurBusinessModel" value="OurBusinessModel.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="OurBusinessModel">
+              OurBusinessModel
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="HomePageImage3" value="carousel3.jpg" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="HomePageImage3">
+              Slide Image3
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="TAN" value="TAN.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="TAN">
+              TAN
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="DIC" value="DIC.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="DIC">
+              DIC
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="Processing" value="Processing.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="Processing">
+              Processing
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light">      <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="profile" value="profile.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="profile">
+              Profile PDF
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light" style="display: none;">      <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="ValueAddition" value="ValueAddition.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="ValueAddition">
+              Value Addition
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="HomePageImage4" value="carousel4.jpg" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="HomePageImage4">
+              Slide Image4
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="FSSAI" value="FSSAI.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="FSSAI">
+              FSSAI
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="APMC" value="APMC.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="APMC">
+              APMC
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="Seed" value="Seed.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="Seed">
+              Seed
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="OurSupporters" value="OurSupporters.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="OurSupporters">
+              Our Supporters
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light" style="display: none;"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="PoolSale" value="PoolSale.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="PoolSale">
+              Pool&Sale
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="HomePageImage5" value="carousel5.jpg" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="HomePageImage5">
+              Slide Image5
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"  style="background-color: #d31616 !important;color: white;"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="LinkReports" value=".pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="LinkReports">
+              Link Reports
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light" ><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="VisionMission" value="VisionMission.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="VisionMission">
+              Vision Mission
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="Pesticide" value="Pesticide.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="Pesticide">
+              Pesticide
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="FCRA" value="FCRA.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="FCRA">
+              FCRA
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light" style="display: none;"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="MspSale" value="MspSale.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="MspSale">
+              MSP Sale
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="HomePageImage6" value="carousel6.jpg" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="HomePageImage6">
+              Slide Image6
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light" style="display: none;"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="Annualreport5" value="Annualreport5.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="Annualreport5">
+              Annual Report5
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light" ><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="VisitUs" value="VisitUs.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="VisitUs">
+              Visit Us
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light" ><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="Fertilisers" value="Fertilisers.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="Fertilisers">
+              Fertilisers
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="CSR" value="CSR.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="CSR">
+              CSR
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="OurGallery" value="ourgallery.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="OurGallery">
+              Our Gallery
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="BoardMembers" value="BoardMembers.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="BoardMembers">
+              Board Members
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="MemberCoperatives" value="MemberCoperatives.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="MemberCoperatives">
+              Member Coperatives
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light" ><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="OurPrinciples" value="OurPrinciples.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="OurPrinciples">
+              Our Principles
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light" ><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="FederationProfile" value="FederationProfile.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="FederationProfile">
+              Federation Profile
+            </label>
+          </div></div>
+        </div>
+        <div class="col" >
+          <div class="p-3 border bg-light"><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="GSTIN" value="GSTIN.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="GSTIN">
+              GSTIN
+            </label>
+          </div></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light" ><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="CapacityBuilding" value="CapacityBuilding.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="CapacityBuilding">
+              Capacity Building
+            </label>
+          </div></div>
+        </div>
+        <div class="col" style="margin-bottom: 2vw;">
+          <div class="p-3 border bg-light" ><div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="HomepageUpdate" value="HomepageUpdate.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="HomepageUpdate">
+              HomepageUpdate
+            </label>
+          </div></div>
+        </div>
+      </div>
+    </div>
