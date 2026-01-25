@@ -95,7 +95,7 @@ TotalMembers:string;
 
   constructor(private httpClient: HttpClient) { }
   initialize() {
-    return this.httpClient.get<AppConfig>('./config.json')
+    return this.httpClient.get<AppConfig>('https://s3.us-east-1.amazonaws.com/srisatyasaifarmersfederation.org/config.json')
     .pipe(tap((response: AppConfig) => {
       this.Username=response.UserName;
       this.Password=response.Password;

@@ -50,12 +50,12 @@ LinkReportName:string;
     this.route.queryParams
     .subscribe(params => {
      this.LinkReportName= params.report;
-     (<HTMLIFrameElement>document.getElementById('pdfview')).src = this.LinkReportName+"#view=FitH&toolbar=0&scrollbar=0";
+    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "https://s3.us-east-1.amazonaws.com/srisatyasaifarmersfederation.org/" + this.LinkReportName + "#view=FitH&toolbar=0&scrollbar=0";
     }
   );
   if(!this.LinkReportName)
   {
-    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "Annualreport1.pdf#view=FitH&toolbar=0&scrollbar=0";
+    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "https://s3.us-east-1.amazonaws.com/srisatyasaifarmersfederation.org/Annualreport1.pdf#view=FitH&toolbar=0&scrollbar=0";
   }
 }
 openReport(id:number)
@@ -63,69 +63,69 @@ openReport(id:number)
   this.isOn=false;
   if(id===1)
   {
-    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "Annualreport1.pdf#view=FitH&toolbar=0&scrollbar=0";
+    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "https://s3.us-east-1.amazonaws.com/srisatyasaifarmersfederation.org/Annualreport1.pdf#view=FitH&toolbar=0&scrollbar=0";
   }
   if(id===2)
   {
-    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "Annualreport2.pdf#view=FitH&toolbar=0&scrollbar=0";
+    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "https://s3.us-east-1.amazonaws.com/srisatyasaifarmersfederation.org/Annualreport2.pdf#view=FitH&toolbar=0&scrollbar=0";
   }
   if(id===3)
   {
-    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "Annualreport3.pdf#view=FitH&toolbar=0&scrollbar=0";
+    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "https://s3.us-east-1.amazonaws.com/srisatyasaifarmersfederation.org/Annualreport3.pdf#view=FitH&toolbar=0&scrollbar=0";
   }
   if(id===4)
   {
-    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "Annualreport4.pdf#view=FitH&toolbar=0&scrollbar=0";
+    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "https://s3.us-east-1.amazonaws.com/srisatyasaifarmersfederation.org/Annualreport4.pdf#view=FitH&toolbar=0&scrollbar=0";
   }
   if(id===5)
   {
-    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "Annualreport5.pdf#view=FitH&toolbar=0&scrollbar=0";
+    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "https://s3.us-east-1.amazonaws.com/srisatyasaifarmersfederation.org/Annualreport5.pdf#view=FitH&toolbar=0&scrollbar=0";
   }
   if(id===6)
   {
-    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "Auditreport1.pdf#view=FitH&toolbar=0&scrollbar=0";
+    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "https://s3.us-east-1.amazonaws.com/srisatyasaifarmersfederation.org/Auditreport1.pdf#view=FitH&toolbar=0&scrollbar=0";
   }
   if(id===7)
   {
-    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "Auditreport2.pdf#view=FitH&toolbar=0&scrollbar=0";
+    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "https://s3.us-east-1.amazonaws.com/srisatyasaifarmersfederation.org/Auditreport2.pdf#view=FitH&toolbar=0&scrollbar=0";
   }
 
   if(id===8)
   {
-    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "Auditreport3.pdf#view=FitH&toolbar=0&scrollbar=0";
+    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "https://s3.us-east-1.amazonaws.com/srisatyasaifarmersfederation.org/Auditreport3.pdf#view=FitH&toolbar=0&scrollbar=0";
   }
   if(id===9)
   {
-    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "Auditreport4.pdf#view=FitH&toolbar=0&scrollbar=0";
+    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "https://s3.us-east-1.amazonaws.com/srisatyasaifarmersfederation.org/Auditreport4.pdf#view=FitH&toolbar=0&scrollbar=0";
   }
   if(id===10)
   {
-    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "Auditreport5.pdf#view=FitH&toolbar=0&scrollbar=0";
+    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "https://s3.us-east-1.amazonaws.com/srisatyasaifarmersfederation.org/Auditreport5.pdf#view=FitH&toolbar=0&scrollbar=0";
   }
   if(id===11)
   {
-    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "Recentreport1.pdf#view=FitH&toolbar=0&scrollbar=0";
+    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "https://s3.us-east-1.amazonaws.com/srisatyasaifarmersfederation.org/Recentreport1.pdf#view=FitH&toolbar=0&scrollbar=0";
   }
   if(id===12)
   {
-    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "Recentreport2.pdf#view=FitH&toolbar=0&scrollbar=0";
+    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "https://s3.us-east-1.amazonaws.com/srisatyasaifarmersfederation.org/Recentreport2.pdf#view=FitH&toolbar=0&scrollbar=0";
   }
   if(id===13)
   {
-    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "Recentreport3.pdf#view=FitH&toolbar=0&scrollbar=0";
+    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "https://s3.us-east-1.amazonaws.com/srisatyasaifarmersfederation.org/Recentreport3.pdf#view=FitH&toolbar=0&scrollbar=0";
   }
 
   if(id===14)
   {
-    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "Recentreport4.pdf#view=FitH&toolbar=0&scrollbar=0";
+    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "https://s3.us-east-1.amazonaws.com/srisatyasaifarmersfederation.org/Recentreport4.pdf#view=FitH&toolbar=0&scrollbar=0";
   }
   if(id===15)
   {
-    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "Recentreport5.pdf#view=FitH&toolbar=0&scrollbar=0";
+    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "https://s3.us-east-1.amazonaws.com/srisatyasaifarmersfederation.org/Recentreport5.pdf#view=FitH&toolbar=0&scrollbar=0";
   }
   if(id===16)
   {
-    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "Recentreport6.pdf#view=FitH&toolbar=0&scrollbar=0";
+    (<HTMLIFrameElement>document.getElementById('pdfview')).src = "https://s3.us-east-1.amazonaws.com/srisatyasaifarmersfederation.org/Recentreport6.pdf#view=FitH&toolbar=0&scrollbar=0";
   }
 
 }
