@@ -10,13 +10,13 @@ export class UploadService {
     const contentType = file.type;
     const bucket = new S3(
     {
-    accessKeyId: 'AKIAUY63HUAYPXOCSV6J',
-    secretAccessKey: '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',
-    region: 'ap-south-1',
+    accessKeyId: 'AKIAYHJANHKNUVOSUXCO',
+    secretAccessKey: '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',
+    region: 'us-east-1',
     }
     );
     const params = {
-    Bucket: 'ssmacfl.org',
+    Bucket: 'satyasaifarmersfederation',
     Key: filename,
     Body: file,
     ACL: 'public-read',
